@@ -12,3 +12,11 @@
 body {
   padding-top: 10px;
 }
+
+.icon {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    right: 20px;
+    top: -2px;
+}
