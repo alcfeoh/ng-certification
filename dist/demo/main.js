@@ -288,6 +288,7 @@ var SearchComponent = /*#__PURE__*/(function () {
           next: function next(response) {
             _this.weatherForZipCode = response;
             _this.weatherForZipCode.zipCode = _this.zipCode;
+            _this.weatherForZipCode.imageName = _this.weatherService.getImageName(_this.weatherForZipCode.weather[0].main);
 
             _this.weatherList.push(_this.weatherForZipCode);
 
@@ -359,10 +360,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var D_source_angular_cert_weather_greg_ng_certification_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js */ 5671);
 /* harmony import */ var D_source_angular_cert_weather_greg_ng_certification_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createClass.js */ 3144);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 5000);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 5000);
 /* harmony import */ var _services_storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/storage.service */ 1188);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 9808);
-/* harmony import */ var _weather_weather_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../weather/weather.component */ 7366);
+/* harmony import */ var _services_weather_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/weather.service */ 1834);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 9808);
+/* harmony import */ var _weather_weather_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../weather/weather.component */ 7366);
+
 
 
 
@@ -372,45 +375,45 @@ __webpack_require__.r(__webpack_exports__);
 
 function WeatherListComponent_div_0_Template(rf, ctx) {
   if (rf & 1) {
-    var _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵgetCurrentView"]();
+    var _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "div", 1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](2, "app-weather", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](3, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](4, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](5, "span", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("click", function WeatherListComponent_div_0_Template_span_click_5_listener() {
-      var restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](1, "div", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](2, "app-weather", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](3, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](4, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](5, "span", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function WeatherListComponent_div_0_Template_span_click_5_listener() {
+      var restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r3);
       var weather_r1 = restoredCtx.$implicit;
-      var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
+      var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
       return ctx_r2.removeZipCode(weather_r1.zipCode);
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](6, "\xD7");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](7, "img", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](8, "lowercase");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](6, "\xD7");
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](7, "img", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
   }
 
   if (rf & 2) {
     var weather_r1 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("weather", weather_r1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpropertyInterpolate1"]("src", "https://www.angulartraining.com/images/weather/", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](8, 2, weather_r1.weather[0].main), ".png", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("weather", weather_r1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵpropertyInterpolate"]("src", weather_r1.imageName, _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵsanitizeUrl"]);
   }
 }
 
 var WeatherListComponent = /*#__PURE__*/(function () {
   var WeatherListComponent = /*#__PURE__*/function () {
-    function WeatherListComponent(storageService) {
+    function WeatherListComponent(storageService, weatherService) {
       (0,D_source_angular_cert_weather_greg_ng_certification_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_0__["default"])(this, WeatherListComponent);
 
       this.storageService = storageService;
+      this.weatherService = weatherService;
     }
 
     (0,D_source_angular_cert_weather_greg_ng_certification_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_1__["default"])(WeatherListComponent, [{
@@ -431,10 +434,10 @@ var WeatherListComponent = /*#__PURE__*/(function () {
   }();
 
   WeatherListComponent.ɵfac = function WeatherListComponent_Factory(t) {
-    return new (t || WeatherListComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdirectiveInject"](_services_storage_service__WEBPACK_IMPORTED_MODULE_2__.StorageService));
+    return new (t || WeatherListComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_services_storage_service__WEBPACK_IMPORTED_MODULE_2__.StorageService), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_services_weather_service__WEBPACK_IMPORTED_MODULE_3__.WeatherService));
   };
 
-  WeatherListComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineComponent"]({
+  WeatherListComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineComponent"]({
     type: WeatherListComponent,
     selectors: [["app-weather-list"]],
     inputs: {
@@ -445,15 +448,14 @@ var WeatherListComponent = /*#__PURE__*/(function () {
     consts: [[4, "ngFor", "ngForOf"], [1, "col-md-9"], [3, "weather"], [1, "col-md-2"], [1, "close", 3, "click"], [3, "src"]],
     template: function WeatherListComponent_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](0, WeatherListComponent_div_0_Template, 9, 4, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](0, WeatherListComponent_div_0_Template, 8, 2, "div", 0);
       }
 
       if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("ngForOf", ctx.weatherList);
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("ngForOf", ctx.weatherList);
       }
     },
-    directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__.NgForOf, _weather_weather_component__WEBPACK_IMPORTED_MODULE_3__.WeatherComponent],
-    pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_5__.LowerCasePipe],
+    directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__.NgForOf, _weather_weather_component__WEBPACK_IMPORTED_MODULE_4__.WeatherComponent],
     styles: [""]
   });
   return WeatherListComponent;
@@ -662,7 +664,7 @@ var ForecastComponent = /*#__PURE__*/(function () {
     type: ForecastComponent,
     selectors: [["app-forecast"]],
     decls: 9,
-    vars: 4,
+    vars: 5,
     consts: [[1, "container-fluid"], [1, "panel", "panel-default"], [1, "panel-heading"], [1, "panel-title"], [1, "list-group"], ["class", "list-group-item", 4, "ngFor", "ngForOf"], ["tabindex", "0", "id", "mainPageBtn", 1, "btn", "btn-success", 3, "routerLink"], [1, "list-group-item"], [1, "icon", 3, "src"]],
     template: function ForecastComponent_Template(rf, ctx) {
       if (rf & 1) {
@@ -685,11 +687,11 @@ var ForecastComponent = /*#__PURE__*/(function () {
 
       if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"]("5-day forecast for ", ctx.forecastForZipCode.city == null ? null : ctx.forecastForZipCode.city.name, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate2"]("5-day forecast for ", ctx.forecastForZipCode.city == null ? null : ctx.forecastForZipCode.city.name, " (", ctx.zipCode, ")");
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("ngForOf", ctx.fiveDayForecast);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpureFunction0"](3, _c0));
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpureFunction0"](4, _c0));
       }
     },
     directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__.NgForOf, _angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterLink],
