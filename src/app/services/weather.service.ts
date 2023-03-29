@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, retry } from 'rxjs';
-import { IRoot, IWeather } from '../models/weather.interface';
+import { IRootWeather } from '../models/weather.interface';
 import { IForecast } from '../models/forecast.interface';
 
 const RAIN = 'https://www.angulartraining.com/images/weather/rain.png';
@@ -16,12 +16,12 @@ export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getWeatherForZipCode(zipCode: string) : Observable<IRoot> {
+  getWeatherForZipCode(zipCode: string) : Observable<IRootWeather> {
     const weatherApiUrl = 'https://api.openweathermap.org/data/2.5/';
     const weatherAppId = '5a4b2d457ecbef9eb2a71e480b947604'
     const apiUrl = `${weatherApiUrl}weather?zip=${zipCode},us&appid=${weatherAppId}&units=imperial`;
 
-    return this.httpClient.get<IRoot>(apiUrl)
+    return this.httpClient.get<IRootWeather>(apiUrl)
       .pipe(
         retry(3)
       );
@@ -38,9 +38,11 @@ export class WeatherService {
       );
   }  
 
-  getImageName = (weather: string): string => {
+  getImageName(weather: string): string {
     switch (weather.toLowerCase()) {
       case 'rain':
+      case 'drizzle':
+      case 'thunderstorm':
         return RAIN;
       case 'sun':
       case 'clear':

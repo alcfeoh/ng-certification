@@ -1,4 +1,4 @@
-export interface IRoot {
+export interface IRootWeather {
     coord: ICoord
     weather: IWeather[]
     base: string
@@ -13,6 +13,7 @@ export interface IRoot {
     name: string
     cod: number
     zipCode: string
+    imageName: string
   }
   
   export interface ICoord {

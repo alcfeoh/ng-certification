@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">5-day forecast for {{forecastForZipCode.city?.name}}</h3>
+        <h3 class="panel-title">5-day forecast for {{forecastForZipCode.city?.name}} ({{zipCode}})</h3>
   
       </div>
       <ul class="list-group">
-        <!----><li class="list-group-item" *ngFor="let item of fiveDayForecast">
+        <li class="list-group-item" *ngFor="let item of fiveDayForecast">
           {{item.temperatureDate | date}}
           {{item.main}}
           - Min: {{item.temp_min | number: '1.0-0'}}

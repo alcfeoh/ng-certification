@@ -1,1 +1,13 @@
-<p>weather works!</p>
+<div class="row">
+    <h3>{{weather.name}} ({{weather.zipCode}})</h3>
+    <h4>Current conditions: {{weather.weather[0].main}}</h4>
+    <h4>Temperatures today:</h4>
+    <p>
+    Current {{weather.main.temp | number: '1.0-0'}}
+    - Max {{weather.main.temp_max | number: '1.0-0'}}
+    - Min {{weather.main.temp_min | number: '1.0-0'}}
+    </p>
+    <p>
+    <a href="/forecast/{{weather.zipCode}}">Show 5-day forecast for {{weather.name}}</a>
+    </p>
+</div>

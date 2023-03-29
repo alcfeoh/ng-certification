@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { take, zip } from 'rxjs';
-import { IRoot } from '../../models/weather.interface';
+import { IRootWeather } from '../../models/weather.interface';
 import { StorageService } from '../../services/storage.service';
 import { WeatherService } from '../../services/weather.service';
 
@@ -12,10 +12,10 @@ import { WeatherService } from '../../services/weather.service';
 })
 export class SearchComponent implements OnInit {
   public zipCode: string;
-  weatherForZipCode: IRoot;
+  weatherForZipCode: IRootWeather;
   zipCodeControl: FormControl;
   formGroup!: FormGroup;
-  weatherList: Array<IRoot> = new Array<IRoot>();
+  weatherList: Array<IRootWeather> = new Array<IRootWeather>();
   constructor(private storageService: StorageService,
     private weatherService: WeatherService,
     private formBuilder: FormBuilder) { }
@@ -35,6 +35,7 @@ export class SearchComponent implements OnInit {
         next: (response) => {
           this.weatherForZipCode = response;
           this.weatherForZipCode.zipCode = this.zipCode;
+          this.weatherForZipCode.imageName = this.weatherService.getImageName(this.weatherForZipCode.weather[0].main);
           this.weatherList.push(this.weatherForZipCode);
           this.storageService.removeItem('zipCodeWeatherData');
           this.storageService.setItem('zipCodeWeatherData', this.weatherList);
