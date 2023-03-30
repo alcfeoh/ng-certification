@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { take, zip } from 'rxjs';
 import { IRootWeather } from '../../models/weather.interface';
 import { StorageService } from '../../services/storage.service';
@@ -16,24 +16,27 @@ export class SearchComponent implements OnInit {
   zipCodeControl: FormControl;
   formGroup!: FormGroup;
   weatherList: Array<IRootWeather> = new Array<IRootWeather>();
+  get zipCodeValidation() { return this.formGroup.get('zipCode'); }
+
   constructor(private storageService: StorageService,
     private weatherService: WeatherService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      zipCode: [null, null]
+      zipCode: [null, Validators.compose([Validators.required, Validators.minLength(5)])]
     });
-    this.weatherList = this.storageService.getItem('zipCodeWeatherData')
+    this.weatherList = this.storageService.getItem('zipCodeWeatherData') ?? new Array<IRootWeather>();
   }
 
   addLocation() {
     this.zipCode = this.formGroup.get('zipCode')?.value;
-    console.log(this.zipCode);
     this.weatherService.getWeatherForZipCode(this.zipCode)
       .subscribe({
         next: (response) => {
           this.weatherForZipCode = response;
+          console.log('weather for zip code:')
+          console.log(this.weatherForZipCode);
           this.weatherForZipCode.zipCode = this.zipCode;
           this.weatherForZipCode.imageName = this.weatherService.getImageName(this.weatherForZipCode.weather[0].main);
           this.weatherList.push(this.weatherForZipCode);

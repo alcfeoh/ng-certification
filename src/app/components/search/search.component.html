@@ -6,6 +6,8 @@
       <button class="btn btn-primary" id="addLocationBtn" type="submit" (click)="addLocation()">
         Add location
       </button>
+      <div class="text-danger" *ngIf="zipCodeValidation?.hasError('required')">Zipcode is required</div>
+      <div class="text-danger" *ngIf="zipCodeValidation?.hasError('minlength')">Zipcode has a minimum length of five digits.</div>
   </div>
 </form>
 <app-weather-list [weatherList]="weatherList"></app-weather-list>

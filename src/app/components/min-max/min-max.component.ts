@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IRootWeather } from '../../models/weather.interface';
 
 @Component({
   selector: 'app-min-max',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./min-max.component.css']
 })
 export class MinMaxComponent implements OnInit {
-
+  @Input() weather: IRootWeather;
   constructor() { }
 
   ngOnInit(): void {
