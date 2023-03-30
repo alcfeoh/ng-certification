@@ -103,3 +103,30 @@ First, build the Angular app with ng build --configuration production
 In path mappings under configuration in azure app service, set physical path to site\wwwroot\demo
 The sample application that Alain provided deploys to the demo folder
 https://medium.com/@kevinding0218/deploy-angular-8-application-to-azure-app-service-paas-using-local-git-cd-10d32f6f8629
+
+Add web.config under demo folder that allows routing in Azure web app
+The app service editor can be used to do this. Add scm and /dev to the application url. then create the web.config in the demo folder
+https://angularweathercert.scm.azurewebsites.net/dev
+add src/web.config to assets in angular.json. verify if web.config stays in azure after ng build --configuration production
+web.config
+<configuration>
+    <system.webServer>
+         <rewrite>
+            <rules>
+              <rule name="AngularJS Routes" stopProcessing="true">
+                <match url=".*" />
+                <conditions logicalGrouping="MatchAll">
+                  <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                  <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+                </conditions>
+                <action type="Rewrite" url="/" />
+              </rule>
+            </rules>
+          </rewrite>
+          <caching enabled="true" enableKernelCache="true">
+              <profiles>
+                  <add extension=".js" policy="DisableCache" kernelCachePolicy="DisableCache" />
+              </profiles>
+          </caching>
+    </system.webServer>
+</configuration>
