@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { take, zip } from 'rxjs';
 import { IRootWeather } from '../../models/weather.interface';
 import { StorageService } from '../../services/storage.service';
 import { WeatherService } from '../../services/weather.service';
