@@ -30,7 +30,7 @@ export class WeatherService {
   getForecastForZipCode(zipCode: string|null) : Observable<IForecast> {
     const weatherApiUrl = 'https://api.openweathermap.org/data/2.5/';
     const weatherAppId = '5a4b2d457ecbef9eb2a71e480b947604'
-    const apiUrl = `${weatherApiUrl}forecast16?zip=${zipCode},us&appid=${weatherAppId}&units=imperial&cnt=5`;
+    const apiUrl = `${weatherApiUrl}forecast16?zip=${zipCode},us&appid=${weatherAppId}&units=imperial&cnt=3`;
 
     return this.httpClient.get<IForecast>(apiUrl)
       .pipe(
