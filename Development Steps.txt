@@ -99,8 +99,8 @@ https://www.freecodecamp.org/news/how-to-use-azure-static-web-apps-to-deploy-ang
 See actions tab on github while the deployment is run
 
 Deploy to azure app service through visual studio code azure app service add on
-Push latest to git repo
 Build the Angular app with ng build --configuration production
+Push latest to git repo
 In path mappings under configuration in azure app service, set physical path to site\wwwroot\demo
 The sample application that Alain provided deploys to the demo folder
 https://medium.com/@kevinding0218/deploy-angular-8-application-to-azure-app-service-paas-using-local-git-cd-10d32f6f8629
