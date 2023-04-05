@@ -627,7 +627,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function ForecastComponent_li_6_Template(rf, ctx) {
+function ForecastComponent_li_7_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "li", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1);
@@ -701,7 +701,7 @@ var ForecastComponent = /*#__PURE__*/(function () {
   ForecastComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
     type: ForecastComponent,
     selectors: [["app-forecast"]],
-    decls: 9,
+    decls: 10,
     vars: 5,
     consts: [[1, "container-fluid"], [1, "panel", "panel-default"], [1, "panel-heading"], [1, "panel-title"], [1, "list-group"], ["class", "list-group-item", 4, "ngFor", "ngForOf"], ["tabindex", "0", "id", "mainPageBtn", 1, "btn", "btn-success", 3, "routerLink"], [1, "list-group-item"], [1, "icon", 3, "src"]],
     template: function ForecastComponent_Template(rf, ctx) {
@@ -712,13 +712,14 @@ var ForecastComponent = /*#__PURE__*/(function () {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "h3", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5, " Greg was here ");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "ul", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](6, ForecastComponent_li_6_Template, 6, 13, "li", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "ul", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, ForecastComponent_li_7_Template, 6, 13, "li", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "button", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](8, "< Back to main page");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "button", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](9, "< Back to main page");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
       }
@@ -726,7 +727,7 @@ var ForecastComponent = /*#__PURE__*/(function () {
       if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"]("5-day forecast for ", ctx.forecastForZipCode.city == null ? null : ctx.forecastForZipCode.city.name, " (", ctx.zipCode, ")");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngForOf", ctx.fiveDayForecast);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpureFunction0"](4, _c0));
