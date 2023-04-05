@@ -22,15 +22,15 @@ export class ForecastComponent implements OnInit {
       next: (response) => {
         this.forecastForZipCode = response;
         
-        const next5days = [...new Set(response.list.map(r => r.dt_txt.substring(0, 10)))].splice(0);
-        next5days.forEach(day => {
-          const dailyData = response.list.find(d => d.dt_txt.substring(0, 10) === day);
+        //const next5days = [...new Set(response.list.map(r => r.dt_txt.substring(0, 10)))].splice(0);
+        response.list.forEach(day => {
+          //const dailyData = response.list.find(d => d.dt_txt.substring(0, 10) === day);
           this.fiveDayForecast.push({
-            temperatureDate: dailyData?.dt_txt,
-            main: dailyData?.weather[0].main,
-            temp_min: dailyData?.main.temp_min,
-            temp_max: dailyData?.main.temp_max,
-            imageName: this.setImageName(dailyData?.weather[0].main),
+            temperatureDate: day?.dt_txt,
+            main: day?.weather[0].main,
+            temp_min: day?.main.temp_min,
+            temp_max: day?.main.temp_max,
+            imageName: this.setImageName(day?.weather[0].main)
           });
         });
       }

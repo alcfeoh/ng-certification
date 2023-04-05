@@ -7,7 +7,8 @@ import { IRootWeather } from '../../models/weather.interface';
   styleUrls: ['./min-max.component.css']
 })
 export class MinMaxComponent implements OnInit {
-  @Input() weather: IRootWeather;
+  @Input() minTemperature: number;
+  @Input() maxTemperature: number;
   constructor() { }
 
   ngOnInit(): void {

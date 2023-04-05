@@ -34,8 +34,6 @@ export class SearchComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.weatherForZipCode = response;
-          console.log('weather for zip code:')
-          console.log(this.weatherForZipCode);
           this.weatherForZipCode.zipCode = this.zipCode;
           this.weatherForZipCode.imageName = this.weatherService.getImageName(this.weatherForZipCode.weather[0].main);
           this.weatherList.push(this.weatherForZipCode);

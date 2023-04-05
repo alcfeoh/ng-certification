@@ -1,12 +1,12 @@
 <div class="row">
-    <h3>{{weather.name}} ({{weather.zipCode}})</h3>
-    <h4>Current conditions: {{weather.weather[0].main}}</h4>
+    <h3>{{weatherData.name}} ({{weatherData.zipCode}})</h3>
+    <h4>Current conditions: {{weatherData.weather[0].main}}</h4>
     <h4>Temperatures today:</h4>
     <p>
-    Current {{weather.main.temp | number: '1.0-0'}}
-    <app-min-max [weather]="weather"></app-min-max>
+        Current {{weatherData.main.temp | number: '1.0-0'}}
+        <app-min-max [minTemperature]="weatherData.main.temp_min" [maxTemperature]="weatherData.main.temp_max"></app-min-max>
     </p>
     <p>
-    <a href="/forecast/{{weather.zipCode}}">Show 5-day forecast for {{weather.name}}</a>
+        <a href="/forecast/{{weatherData.zipCode}}">Show 5-day forecast for {{weatherData.name}}</a>
     </p>
 </div>

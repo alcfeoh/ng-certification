@@ -7,7 +7,7 @@ import { IRootWeather } from '../../models/weather.interface';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-  @Input() weather: IRootWeather;
+  @Input() weatherData: IRootWeather;
   constructor() { }
 
   ngOnInit(): void {
