@@ -924,7 +924,7 @@ var WeatherService = /*#__PURE__*/(function () {
       value: function getForecastForZipCode(zipCode) {
         var weatherApiUrl = 'https://api.openweathermap.org/data/2.5/';
         var weatherAppId = '5a4b2d457ecbef9eb2a71e480b947604';
-        var apiUrl = "".concat(weatherApiUrl, "forecast16?zip=").concat(zipCode, ",us&appid=").concat(weatherAppId, "&units=imperial&cnt=3");
+        var apiUrl = "".concat(weatherApiUrl, "forecast/daily?zip=").concat(zipCode, ",us&appid=").concat(weatherAppId, "&units=imperial&cnt=5");
         return this.httpClient.get(apiUrl).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_2__.retry)(3));
       }
     }, {
