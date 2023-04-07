@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">5-day forecast for {{forecastForZipCode.city?.name}} ({{zipCode}})</h3>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of fiveDayForecast">
+          {{item.temperatureDate | date:'EEEE, MMM d'}}
+          {{item.main}}
+          - Min: {{item.temp_min | number: '1.0-0'}}
+          - Max: {{item.temp_max | number: '1.0-0'}}
+  
+          <img class="icon" src="{{item.imageName}}">
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-success" tabindex="0" id="mainPageBtn" [routerLink]="['/home']">&lt; Back to main page</button>
+  </div>
