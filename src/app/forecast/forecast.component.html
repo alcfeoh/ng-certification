@@ -5,7 +5,7 @@
       </div>
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let item of fiveDayForecast">
-          {{item.temperatureDate | date}}
+          {{item.temperatureDate | date:'EEEE, MMM d'}}
           {{item.main}}
           - Min: {{item.temp_min | number: '1.0-0'}}
           - Max: {{item.temp_max | number: '1.0-0'}}

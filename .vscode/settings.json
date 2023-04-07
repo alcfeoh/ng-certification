@@ -1,4 +1,25 @@
 {
     "appService.defaultWebAppToDeploy": "/subscriptions/b1959a35-dec5-4212-a443-7fc079e8b512/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/AngularWeatherCert",
-    "appService.deploySubpath": "dist"
+    "appService.deploySubpath": "dist",
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#61dafa",
+        "activityBar.background": "#61dafa",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#f827cc",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#15202b99",
+        "sash.hoverBorder": "#61dafa",
+        "statusBar.background": "#2fcef9",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#07bdee",
+        "statusBarItem.remoteBackground": "#2fcef9",
+        "statusBarItem.remoteForeground": "#15202b",
+        "titleBar.activeBackground": "#2fcef9",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveBackground": "#2fcef999",
+        "titleBar.inactiveForeground": "#15202b99",
+        "tab.activeBorder": "#61dafa"
+    },
+    "peacock.color": "#2fcef9"
 }

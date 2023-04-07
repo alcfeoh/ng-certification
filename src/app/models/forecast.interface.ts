@@ -1,59 +1,9 @@
 export interface IForecast {
+  city: IForecastCity
   cod: string
   message: number
   cnt: number
   list: IForecastList[]
-  city: IForecastCity
-}
-
-export interface IForecastList {
-  dt: number
-  main: IForecastMain
-  weather: IForecastWeather[]
-  clouds: IForecastClouds
-  wind: IForecastWind
-  visibility: number
-  pop: number
-  rain?: IForecastRain
-  sys: IForecastSys
-  dt_txt: string
-}
-
-export interface IForecastMain {
-  temp: number
-  feels_like: number
-  temp_min: number
-  temp_max: number
-  pressure: number
-  sea_level: number
-  grnd_level: number
-  humidity: number
-  temp_kf: number
-}
-
-export interface IForecastWeather {
-  id: number
-  main: string
-  description: string
-  icon: string
-}
-
-export interface IForecastClouds {
-  all: number
-}
-
-export interface IForecastWind {
-  speed: number
-  deg: number
-  gust: number
-}
-
-export interface IForecastRain {
-  "3h": number
-}
-
-export interface IForecastSys {
-  pod: string
 }
 
 export interface IForecastCity {
@@ -63,19 +13,57 @@ export interface IForecastCity {
   country: string
   population: number
   timezone: number
-  sunrise: number
-  sunset: number
 }
 
 export interface IForecastCoord {
-  lat: number
   lon: number
+  lat: number
+}
+
+export interface IForecastList {
+  dt: number
+  sunrise: number
+  sunset: number
+  temp: IForecastTemp
+  feels_like: IForecastFeelsLike
+  pressure: number
+  humidity: number
+  weather: IForecastWeather[]
+  speed: number
+  deg: number
+  gust: number
+  clouds: number
+  pop: number
+  rain?: number
+}
+
+export interface IForecastTemp {
+  day: number
+  min: number
+  max: number
+  night: number
+  eve: number
+  morn: number
+}
+
+export interface IForecastFeelsLike {
+  day: number
+  night: number
+  eve: number
+  morn: number
+}
+
+export interface IForecastWeather {
+  id: number
+  main: string
+  description: string
+  icon: string
 }
 
 export interface IFiveDayForecast {
   main: string|undefined;
   temp_min: number|undefined;
   temp_max: number|undefined;
-  temperatureDate: string|undefined;
+  temperatureDate: number|undefined;
   imageName: string;
 }
