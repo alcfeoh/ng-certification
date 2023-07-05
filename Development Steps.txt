@@ -1,0 +1,135 @@
+1. in forecast folder in the terminal - ng g c forecast
+2. ng generate module app-routing --flat --module=app
+3. create components for each sub component of the app
+- ng g c min-max 
+- ng g c search
+- weather
+- weather-list
+- home
+4. create models and services folder
+5. in models folder ng g i weather
+6. console.log the response from the api call for weather. copy the json
+ - create interfaces for each model using http://json2ts.com/ or https://transform.tools/json-to-typescript
+7. in services folder
+- ng g s storage
+- ng g s weather
+8. remove hello component and references
+9. Move html from app.component.html to relevant component files
+10. Ensure declaration for components in app.module
+-remove ForecastModule from app.module
+11. Add routes, import RouterModule.forRoot(routes) in app-routing.module
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'home', component: HomeComponent },
+  { path: 'forecast/:zipCode', component: ForecastComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+12. Add index.html html, head, body, app-root
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Weather App</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+13. In app.component.ts change selector to app-root
+14. In home.component.html, add search and weather-list selectors
+15. Add local storage get, set, remove item and clear methods to storage.service
+16. Add HttpClient to weather service, add method for getWeatherForZipCode
+- see https://openweathermap.org/current for api URL specifically for zip code
+-https://api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
+17. Inject weatherService and storageService to SearchComponent
+18. Add HttpClientModule import to app.module.ts
+19. Implement addLocation method to call getWeatherForZipCode with zipCode from input box and subscribe to response.
+20. Import ReactiveFormsModule in app.module.ts if using reactive forms for zipCode
+21. If using reactive forms, make button type submit button, add formGroup binding on form
+<form [formGroup]="formGroup" novalidate>
+  <div class="well">
+      <h2>Enter a zipcode:</h2>
+      <input class="form-control" placeholder="Zipcode" type="text" id="zipcode" formControlName="zipCode">
+      <br>
+      <button class="btn btn-primary" id="addLocationBtn" type="submit" (click)="addLocation()">
+        Add location
+      </button>
+  </div>
+</form>
+22. Move weather-list to child component of search, bind input array on weather-list component html and add @Input array
+23. Use ngFor in weather-list component html and bind weather properties, use pipes when necessary for number formatting and lowercase for image name
+24. Add interfaces from forecast api call
+-https://api.openweathermap.org/data/2.5/forecast?zip=27407,us&appid=5a4b2d457ecbef9eb2a71e480b947604&units=imperial
+25. Add forecast service call to weather.service.ts
+26. Add forecast routing path to app-routing.module for zipcode parameter in URL link <a href="/forecast/{{weather.zipCode}}">Show 5-day forecast for {{weather.name}}</a>
+27. Add constants for weather images to weather service
+-Condition codes need to be mapped in weather.service to these conditions: https://openweathermap.org/weather-conditions
+28. In forecast component, code next5days and populate interface object with appropriate data
+- set the image name based on the weather condition
+29. Code forecast view to display 5 days of data
+30. [routerLink] for back to main page button
+31. Implement remove zip code
+32. Move weather html out of weather-list to its own component, bind weather to single element of weather-list array
+33. Move min-max html to its own component and bind input data for the component
+34. In the search component, add validation for zipcode
+
+Publish to github
+1. Create a fork by pushing to repo in VS code
+-possibly have to use commands from repo on github in visual studio code to initialize repo
+
+how to get debugging working in devtools?
+in angular.json set this option to not optimize, but this still isn't quite the Angular typescript code
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "optimization": false,
+
+Create static web app in Azure and grab the setting from Github during Azure wizard
+https://www.freecodecamp.org/news/how-to-use-azure-static-web-apps-to-deploy-angular-app/
+See actions tab on github while the deployment is run
+
+Deploy to azure app service through visual studio code azure app service add on
+Build the Angular app with ng build --configuration production
+Push latest to git repo
+In path mappings under configuration in azure app service, set physical path to site\wwwroot\demo
+The sample application that Alain provided deploys to the demo folder
+https://medium.com/@kevinding0218/deploy-angular-8-application-to-azure-app-service-paas-using-local-git-cd-10d32f6f8629
+
+Add web.config under demo folder that allows routing in Azure web app
+The app service editor can be used to do this. Add scm and /dev to the application url. then create the web.config in the demo folder
+https://angularweathercert.scm.azurewebsites.net/dev
+add src/web.config to assets in angular.json. verify if web.config stays in azure after ng build --configuration production
+web.config
+<configuration>
+    <system.webServer>
+         <rewrite>
+            <rules>
+              <rule name="AngularJS Routes" stopProcessing="true">
+                <match url=".*" />
+                <conditions logicalGrouping="MatchAll">
+                  <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                  <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+                </conditions>
+                <action type="Rewrite" url="/" />
+              </rule>
+            </rules>
+          </rewrite>
+          <caching enabled="true" enableKernelCache="true">
+              <profiles>
+                  <add extension=".js" policy="DisableCache" kernelCachePolicy="DisableCache" />
+              </profiles>
+          </caching>
+    </system.webServer>
+</configuration>
+
+Right click dist folder in Visual Studio Code, then click "Deploy to Web App..."

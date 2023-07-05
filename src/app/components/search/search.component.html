@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup" novalidate>
+  <div class="well">
+      <h2>Enter a zipcode:</h2>
+      <input class="form-control" placeholder="Zipcode" type="text" id="zipcode" formControlName="zipCode">
+      <br>
+      <button class="btn btn-primary" id="addLocationBtn" type="submit" (click)="addLocation()">
+        Add location
+      </button>
+      <div class="text-danger" *ngIf="zipCodeValidation?.hasError('required')">Zipcode is required</div>
+      <div class="text-danger" *ngIf="zipCodeValidation?.hasError('minlength')">Zipcode must be at least five digits.</div>
+  </div>
+</form>
+<app-weather-list [weatherList]="weatherList"></app-weather-list>
